@@ -26,6 +26,18 @@ namespace TennisGame
             return score;
         }
 
+        public string Point()
+        {
+            var score = "";
+
+            score = TranslatePoint(_playerOneScore) + ":" + TranslatePoint(_playerTwoScore);
+            return score;
+
+        }
+
+        /// <summary>
+        /// PlayerOne得分
+        /// </summary>
         public void PlayerOneWinPoint()
         {
             _playerOneScore++;
@@ -47,6 +59,28 @@ namespace TennisGame
                     break;
                 default:
                     score = "Love";
+                    break;
+            }
+
+            return score;
+        }
+
+        private string TranslatePoint(int point)
+        {
+            var score = "";
+            switch (point)
+            {
+                case 1:
+                    score = "15";
+                    break;
+                case 2:
+                    score = "30";
+                    break;
+                case 3:
+                    score = "40";
+                    break;
+                default:
+                    score = "0";
                     break;
             }
 

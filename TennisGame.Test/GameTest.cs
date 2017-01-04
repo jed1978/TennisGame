@@ -27,6 +27,11 @@ namespace TennisGame.Test
             Assert.AreEqual("Fifteen Love", target.Score());
         }
 
-
+        [TestMethod]
+        public void TestFifteenPoint()
+        {
+            target.PlayerOneWinPoint();
+            Assert.AreEqual("15:0", target.Point());
+        }
     }
 }
