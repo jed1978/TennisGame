@@ -35,6 +35,11 @@ namespace TennisGame
 
         }
 
+        public void PlayerTwoWinPoint()
+        {
+            _playerTwoScore++;
+        }
+
         /// <summary>
         /// PlayerOne得分
         /// </summary>
