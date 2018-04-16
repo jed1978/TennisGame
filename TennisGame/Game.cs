@@ -2,13 +2,13 @@
 {
     public class Game
     {
-        public Game(string v, string v1)
+        public Game(string homePlayer, string awayPlayer)
         {
         }
 
         public string Score()
         {
-            throw new System.NotImplementedException();
+            return "0:0";
         }
     }
 }
