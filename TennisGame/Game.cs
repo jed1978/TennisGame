@@ -2,18 +2,28 @@
 {
     public class Game
     {
+        private int _homeGamePoints;
+        private int _awayGamePoints;
+
         public Game(string homePlayer, string awayPlayer)
         {
         }
 
         public string Score()
         {
-            return "0:0";
+            return $"{_homeGamePoints}:{_awayGamePoints}";
         }
 
-        public void EarnedPoint(string home)
+        public void EarnedPoint(string side)
         {
-            throw new System.NotImplementedException();
+            if (side == "Home")
+            {
+                _homeGamePoints++;
+            }
+            else
+            {
+                _awayGamePoints++;
+            }
         }
     }
 }
