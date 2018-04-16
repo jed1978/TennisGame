@@ -31,5 +31,17 @@ namespace TennisGame.Test
 
             target.Score().ShouldBeEqualTo(expected);
         }
+
+        [Test]
+        public void TestHomePlayerScoreThirty()
+        {
+            var target = new Game("Rafael Nadal", "Roger Federer");
+
+            var expected = "2:0";
+            target.EarnedPoint("Home");
+            target.EarnedPoint("Home");
+
+            target.Score().ShouldBeEqualTo(expected);
+        }
     }
 }
