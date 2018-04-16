@@ -11,37 +11,39 @@ namespace TennisGame.Test
     [TestFixture]
     public class GameTests
     {
+        private Game _target;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _target = new Game("Rafael Nadal", "Roger Federer");
+        }
+
         [Test]
         public void TestNewGame()
         {
-            var target = new Game("Rafael Nadal", "Roger Federer");
-
             var expected = "0:0";
 
-            target.Score().ShouldBeEqualTo(expected);
+            _target.Score().ShouldBeEqualTo(expected);
         }
 
         [Test]
         public void TestHomePlayerScoreFifteen()
         {
-            var target = new Game("Rafael Nadal", "Roger Federer");
-
             var expected = "1:0";
-            target.EarnedPoint("Home");
+            _target.EarnedPoint("Home");
 
-            target.Score().ShouldBeEqualTo(expected);
+            _target.Score().ShouldBeEqualTo(expected);
         }
 
         [Test]
         public void TestHomePlayerScoreThirty()
         {
-            var target = new Game("Rafael Nadal", "Roger Federer");
-
             var expected = "2:0";
-            target.EarnedPoint("Home");
-            target.EarnedPoint("Home");
+            _target.EarnedPoint("Home");
+            _target.EarnedPoint("Home");
 
-            target.Score().ShouldBeEqualTo(expected);
+            _target.Score().ShouldBeEqualTo(expected);
         }
     }
 }
