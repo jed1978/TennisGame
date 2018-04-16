@@ -10,5 +10,10 @@
         {
             return "0:0";
         }
+
+        public void EarnedPoint(string home)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
