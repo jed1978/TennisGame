@@ -11,25 +11,6 @@
             Receiver = new Player(receiverName);
         }
 
-        public string ShowPoints()
-        {
-            var serverPoint = 0;
-            if (Server.Point == 1)
-            {
-                serverPoint = 15;
-            }
-            else if (Server.Point == 2)
-            {
-                serverPoint = 30;
-            }
-            else if (Server.Point == 3)
-            {
-                serverPoint = 40;
-            }
-
-            return $"{serverPoint}:0";
-        }
-
         public string ShowScore()
         {
             var serverScore = "Love";

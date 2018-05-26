@@ -20,7 +20,7 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.ShowPoints().ShouldBeEqualTo("0:0");
+            
             game.ShowScore().ShouldBeEqualTo("Love:Love");
         }
 
@@ -30,7 +30,7 @@ namespace TennisGame.Test
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
             game.Server.EarnedPoint();
-            game.ShowPoints().ShouldBeEqualTo("15:0");
+            
             game.ShowScore().ShouldBeEqualTo("Fifteen:Love");
         }
 
@@ -42,7 +42,6 @@ namespace TennisGame.Test
             game.Server.EarnedPoint();
             game.Server.EarnedPoint();
 
-            game.ShowPoints().ShouldBeEqualTo("30:0");
             game.ShowScore().ShouldBeEqualTo("Thirty:Love");
         }
 
@@ -55,7 +54,6 @@ namespace TennisGame.Test
             game.Server.EarnedPoint();
             game.Server.EarnedPoint();
 
-            game.ShowPoints().ShouldBeEqualTo("40:0");
             game.ShowScore().ShouldBeEqualTo("Forty:Love");
         }
     }
