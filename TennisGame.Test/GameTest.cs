@@ -179,8 +179,8 @@ namespace TennisGame.Test
             game.ShowScore().ShouldBeEqualTo($"Winner: Dominic Thiem");
         }
 
-        [Test, Ignore("Refactoring")]
-        public void Test_Server_Deuce_After_Advantange()
+        [Test]
+        public void Test_Deuce_After_Advantange_In()
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
@@ -195,5 +195,7 @@ namespace TennisGame.Test
 
             game.ShowScore().ShouldBeEqualTo($"Deuce");
         }
+
+        
     }
 }

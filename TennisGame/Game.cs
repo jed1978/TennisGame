@@ -42,7 +42,10 @@
 
         public void ReceiverEarnedPoint()
         {
-            _receiverPoint++;
+            if (_serverPoint == 4 && _receiverPoint == 3)
+                _serverPoint--;
+            else
+                _receiverPoint++;
         }
     }
 }
