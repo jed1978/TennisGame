@@ -38,6 +38,11 @@
                 return $"Winner: {Server.Name}";
             }
 
+            if (serverPoint == 3 && receiverPoint == 5)
+            {
+                return $"Winner: {Receiver.Name}";
+            }
+
             if (serverPoint == 4)
             {
                 return $"Winner: {Server.Name}";
