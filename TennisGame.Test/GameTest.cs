@@ -19,7 +19,7 @@ namespace TennisGame.Test
         }
 
         [Test]
-        public void Test_ServerReceiver_0_0()
+        public void Test_ServerReceiver_Draw_Love()
         {
             var serverName = "Nick Kyrgios";
             var receiverName = "Dominic Thiem";
@@ -27,6 +27,7 @@ namespace TennisGame.Test
             var game = new Game(serverName, receiverName);
 
             game.ShowPoints().ShouldBeEqualTo("0:0");
+            game.Score().ShouldBeEqualTo("Love:Love");
 
         }
     }
