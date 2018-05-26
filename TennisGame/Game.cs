@@ -15,7 +15,13 @@
         {
             var serverPoint = 0;
             if (Server.Point == 1)
+            {
                 serverPoint = 15;
+            }
+            else if (Server.Point == 2)
+            {
+                serverPoint = 30;
+            }
 
             return $"{serverPoint}:0";
         }
@@ -26,6 +32,10 @@
             if (Server.Point == 1)
             {
                 serverScore = "Fifteen";
+            }
+            else if (Server.Point == 2)
+            {
+                serverScore = "Thirty";
             }
 
             return $"{serverScore}:Love";
