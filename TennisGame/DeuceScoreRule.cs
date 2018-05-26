@@ -1,33 +1,36 @@
 ﻿namespace TennisGame
 {
-    public class DeuceScoreRule
+    public class DeuceScoreRule : IScoreRule
     {
-        public string Result { get; private set; }
+        public string Score { get; private set; }
 
         public DeuceScoreRule()
         {
-            Result = "";
+            Score = "";
         }
 
-        public string Match(int serverPoint, int receiverPoint)
+        public bool Match(int serverPoint, int receiverPoint)
         {
             
             if (serverPoint == receiverPoint && serverPoint == 3)
             {
-                Result = "Deuce";
+                Score = "Deuce";
+                return true;
             }
 
             if (serverPoint == 4 && receiverPoint == 3)
             {
-                Result = "Advantage in";
+                Score = "Advantage in";
+                return true;
             }
 
             if (serverPoint == 3 && receiverPoint == 4)
             {
-                Result = "Advantage out";
+                Score = "Advantage out";
+                return true;
             }
 
-            return Result;
+            return false;
         }
     }
 }

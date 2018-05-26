@@ -1,21 +1,31 @@
 ﻿namespace TennisGame
 {
-    public class RegularScoreRule
+    public class RegularScoreRule : IScoreRule
     {
         public RegularScoreRule()
         {
         }
 
-        public string Match(int serverPoint, int receiverPoint)
-        {
-            return $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
+        public string Score { get; private set; }
 
+        public bool Match(int serverPoint, int receiverPoint)
+        {
+            var serverScore = DescribeScore(serverPoint);
+            var describeScore = DescribeScore(receiverPoint);
+
+            if (serverScore == "" || describeScore == "")
+                return false;
+            Score = $"{serverScore}:{describeScore}";
+            return true;
         }
 
         private string DescribeScore(int point)
-        {
-            string score = "Love";
-            if (point == 1)
+        {            
+            if (point == 0)
+            {
+                return "Love";
+            }
+            else if (point == 1)
             {
                 return "Fifteen";
             }
@@ -27,8 +37,8 @@
             {
                 return "Forty";
             }
-
-            return score;
+            
+            return "";
         }
     }
 }

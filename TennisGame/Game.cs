@@ -2,8 +2,10 @@
 {
     public class Game
     {
-        private readonly DeuceScoreRule deuceRule;
-        private readonly RegularScoreRule reqularScoreRule;
+        private readonly DeuceScoreRule _deuceRule;
+        private readonly RegularScoreRule _regularScoreRule;
+        private readonly WinnerRule _winnerRule;
+
         public Player Server { get; }
         public Player Receiver { get; }
 
@@ -11,49 +13,24 @@
         {
             Server = new Player(serverName);
             Receiver = new Player(receiverName);
-            deuceRule = new DeuceScoreRule();
-            reqularScoreRule = new RegularScoreRule();
+            _deuceRule = new DeuceScoreRule();
+            _regularScoreRule = new RegularScoreRule();
+            _winnerRule = new WinnerRule(serverName, receiverName);
         }
 
         public string ShowScore()
         {
-            var deuce = deuceRule.Match(Server.Point, Receiver.Point);
-
-            if (deuce == "")
+            if (_deuceRule.Match(Server.Point, Receiver.Point))
             {
-                var winner = Winner(Server.Point, Receiver.Point);
-                if (winner == "")
-                {
-                    return reqularScoreRule.Match(Server.Point, Receiver.Point);
-                }
-                return winner;
-            }
-            return deuce;
-        }
-
-        private string Winner(int serverPoint, int receiverPoint)
-        {
-            if (serverPoint == 5 && receiverPoint == 3)
-            {
-                return $"Winner: {Server.Name}";
+                return _deuceRule.Score;
             }
 
-            if (serverPoint == 3 && receiverPoint == 5)
+            if (_regularScoreRule.Match(Server.Point, Receiver.Point))
             {
-                return $"Winner: {Receiver.Name}";
+                return _regularScoreRule.Score;
             }
 
-            if (serverPoint == 4)
-            {
-                return $"Winner: {Server.Name}";
-            }
-
-            if (receiverPoint == 4)
-            {
-                return $"Winner: {Receiver.Name}";
-            }
-
-            return "";
+            return _winnerRule.Match(Server.Point, Receiver.Point) ? _winnerRule.Score : "";
         }
     }
 }
