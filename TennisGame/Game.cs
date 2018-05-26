@@ -23,6 +23,10 @@
                 return "Advantage in";
             }
 
+            if (Server.Point == 3 && Receiver.Point == 4)
+            {
+                return "Advantage out";
+            }
 
             return RegularScoreRule(Server.Point, Receiver.Point);
         }
