@@ -15,19 +15,4 @@ namespace TennisGame.Test
 
         }
     }
-
-    public class Game
-    {
-        public Game(string server, string receiver)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Player Server { get; private set; }
-        public Player Receiver { get; private set; }
-
-        public class Player
-        {
-        }
-    }
 }
