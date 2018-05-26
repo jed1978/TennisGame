@@ -81,5 +81,20 @@ namespace TennisGame.Test
 
             game.ShowScore().ShouldBeEqualTo("Winner: Nick Kyrgios");
         }
+
+        [Test]
+        public void Test_Server_Thirty_Receiver_Win()
+        {
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
+
+            game.Server.EarnedPoint();
+            game.Receiver.EarnedPoint();
+            game.Server.EarnedPoint();
+            game.Receiver.EarnedPoint();
+            game.Receiver.EarnedPoint();
+            game.Receiver.EarnedPoint();
+
+            game.ShowScore().ShouldBeEqualTo("Winner: Dominic Thiem");
+        }
     }
 }

@@ -20,8 +20,14 @@
                 return $"Winner: {winner}";
             }
 
-            
-            
+            if (Receiver.Point == 4)
+            {
+                winner = Receiver.Name;
+                return $"Winner: {winner}";
+            }
+
+
+
             return RegularScoreRule(Server.Point, Receiver.Point);
         }
 
