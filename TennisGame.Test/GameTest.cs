@@ -23,5 +23,15 @@ namespace TennisGame.Test
             game.ShowPoints().ShouldBeEqualTo("0:0");
             game.Score().ShouldBeEqualTo("Love:Love");
         }
+
+        [Test]
+        public void Test_ServerEarnedPoint_Fifteen_Love()
+        {
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
+
+            game.Server.EarnedPoint();
+            game.ShowPoints().ShouldBeEqualTo("15:0");
+            game.Score().ShouldBeEqualTo("Fifteen:Love");
+        }
     }
 }

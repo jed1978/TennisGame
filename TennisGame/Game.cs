@@ -13,12 +13,22 @@
 
         public string ShowPoints()
         {
-            return "0:0";
+            var serverPoint = 0;
+            if (Server.Point == 1)
+                serverPoint = 15;
+
+            return $"{serverPoint}:0";
         }
 
         public string Score()
         {
-            return "Love:Love";
+            var serverScore = "Love";
+            if (Server.Point == 1)
+            {
+                serverScore = "Fifteen";
+            }
+
+            return $"{serverScore}:Love";
         }
     }
 }
