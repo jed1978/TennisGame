@@ -13,22 +13,29 @@
 
         public string ShowScore()
         {
-            if (Server.Point == Receiver.Point && Server.Point == 3)
+            //return DeuceScoreRule(Server.Point, Receiver.Point);
+
+            return RegularScoreRule(Server.Point, Receiver.Point);
+        }
+
+        private string DeuceScoreRule(int serverPoint, int receiverPoint)
+        {
+            if (serverPoint == receiverPoint && serverPoint == 3)
             {
                 return "Deuce";
             }
 
-            if (Server.Point == 4 && Receiver.Point == 3)
+            if (serverPoint == 4 && receiverPoint == 3)
             {
                 return "Advantage in";
             }
 
-            if (Server.Point == 3 && Receiver.Point == 4)
+            if (serverPoint == 3 && receiverPoint == 4)
             {
                 return "Advantage out";
             }
 
-            return RegularScoreRule(Server.Point, Receiver.Point);
+            return "";
         }
 
         private string Winner(int serverPoint, int receiverPoint)
@@ -58,8 +65,15 @@
 
         private string RegularScoreRule(int serverPoint, int receiverPoint)
         {
-            var winner = Winner(serverPoint, receiverPoint);
-            return winner != "" ? winner : $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
+            if (DeuceScoreRule(Server.Point, Receiver.Point) == "")
+            {
+                if (Winner(serverPoint, receiverPoint) == "")
+                {
+                    return $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
+                }
+                return Winner(serverPoint, receiverPoint);
+            }
+            return DeuceScoreRule(Server.Point, Receiver.Point);
         }
 
         private string DescribeScore(int point)
