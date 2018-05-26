@@ -196,6 +196,21 @@ namespace TennisGame.Test
             game.ShowScore().ShouldBeEqualTo($"Deuce");
         }
 
-        
+        [Test]
+        public void Test_Deuce_After_Advantange_Out()
+        {
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
+
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ReceiverEarnedPoint(); 
+            game.ServerEarnedPoint();   //Deuce
+            game.ReceiverEarnedPoint(); //Adv out
+            game.ServerEarnedPoint(); //Deuce
+
+            game.ShowScore().ShouldBeEqualTo($"Deuce");
+        }
     }
 }

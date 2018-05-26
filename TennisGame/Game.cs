@@ -37,7 +37,10 @@
 
         public void ServerEarnedPoint()
         {
-            _serverPoint++;
+            if (_serverPoint == 3 && _receiverPoint == 4)
+                _receiverPoint--;
+            else
+                _serverPoint++;
         }
 
         public void ReceiverEarnedPoint()
