@@ -18,13 +18,7 @@
 
         private string RegularScoreRule(int serverPoint, int receiverPoint)
         {
-            var serverScore = "Love";
-            var receiverScore = "Love";
-
-            serverScore = DescribeScore(serverPoint);
-            receiverScore = DescribeScore(receiverPoint);
-
-            return $"{serverScore}:{receiverScore}";
+            return $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
         }
 
         private string DescribeScore(int point)
