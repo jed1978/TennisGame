@@ -18,6 +18,11 @@
                 return "Deuce";
             }
 
+            if (Server.Point == 4 && Receiver.Point == 3)
+            {
+                return "Advantage in";
+            }
+
             var winner = "";
             if (Server.Point == 4)
             {
