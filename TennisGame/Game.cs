@@ -3,7 +3,7 @@
     public class Game
     {
         private readonly DeuceScoreRule _deuceRule;
-        private readonly RegularScoreRule _reqularScoreRule;
+        private readonly RegularScoreRule _regularScoreRule;
         private readonly WinnerRule _winnerRule;
         private int _serverPoint;
         private int _receiverPoint;
@@ -16,7 +16,7 @@
             Server = new Player(serverName);
             Receiver = new Player(receiverName);
             _deuceRule = new DeuceScoreRule();
-            _reqularScoreRule = new RegularScoreRule();
+            _regularScoreRule = new RegularScoreRule();
             _winnerRule = new WinnerRule(serverName, receiverName);
         }
 
@@ -27,9 +27,9 @@
                 return _deuceRule.Score;
             }
 
-            if (_reqularScoreRule.Match(_serverPoint, _receiverPoint))
+            if (_regularScoreRule.Match(_serverPoint, _receiverPoint))
             {
-                return _reqularScoreRule.Score;
+                return _regularScoreRule.Score;
             }
 
             return _winnerRule.Match(_serverPoint, _receiverPoint) ? _winnerRule.Score : "";
