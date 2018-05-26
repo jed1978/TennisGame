@@ -13,6 +13,11 @@
 
         public string ShowScore()
         {
+            if (Server.Point == Receiver.Point && Server.Point == 3)
+            {
+                return "Deuce";
+            }
+
             var winner = "";
             if (Server.Point == 4)
             {
