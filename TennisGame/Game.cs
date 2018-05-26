@@ -13,6 +13,15 @@
 
         public string ShowScore()
         {
+            var winner = "";
+            if (Server.Point == 4)
+            {
+                winner = Server.Name;
+                return $"Winner: {winner}";
+            }
+
+            
+            
             return RegularScoreRule(Server.Point, Receiver.Point);
         }
 

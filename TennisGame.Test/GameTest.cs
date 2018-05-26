@@ -67,5 +67,19 @@ namespace TennisGame.Test
 
             game.ShowScore().ShouldBeEqualTo("Fifteen:Fifteen");
         }
+
+        [Test]
+        public void Test_Server_Win_Receiver_Fifteen()
+        {
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
+
+            game.Server.EarnedPoint();
+            game.Receiver.EarnedPoint();
+            game.Server.EarnedPoint();
+            game.Server.EarnedPoint();
+            game.Server.EarnedPoint();  //Player Win if earned 4 points 
+
+            game.ShowScore().ShouldBeEqualTo("Winner: Nick Kyrgios");
+        }
     }
 }
