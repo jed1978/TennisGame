@@ -12,7 +12,8 @@ namespace TennisGame.Test
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
             game.Server.ShouldNotBeNull();
             game.Receiver.ShouldNotBeNull();
-
+            game.Server.Name.ShouldBeEqualTo("Nick Kyrgios");
+            game.Receiver.Name.ShouldBeEqualTo("Dominic Thiem");
         }
     }
 }
