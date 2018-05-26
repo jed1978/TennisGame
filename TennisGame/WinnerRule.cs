@@ -15,13 +15,13 @@
 
         public bool Match(int serverPoint, int receiverPoint)
         {
-            if ((serverPoint == 5 && receiverPoint == 3) || serverPoint == 4)
+            if (serverPoint == 5 && receiverPoint == 3 || serverPoint == 4)
             {
                 Score = $"Winner: {_serverName}";
                 return true;
             }
 
-            if ((serverPoint == 3 && receiverPoint == 5) || receiverPoint == 4)
+            if (serverPoint == 3 && receiverPoint == 5 || receiverPoint == 4)
             {
                 Score = $"Winner: {_receiverName}";
                 return true;
