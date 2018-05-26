@@ -13,21 +13,28 @@
 
         public string ShowScore()
         {
+            return RegularScoreRule(Server.Point, Receiver.Point);
+        }
+
+        private string RegularScoreRule(int serverPoint, int receiverPoint)
+        {
             var serverScore = "Love";
-            if (Server.Point == 1)
+            var receiverScore = "Love";
+
+            if (serverPoint == 1)
             {
                 serverScore = "Fifteen";
             }
-            else if (Server.Point == 2)
+            else if (serverPoint == 2)
             {
                 serverScore = "Thirty";
             }
-            else if (Server.Point == 3)
+            else if (serverPoint == 3)
             {
                 serverScore = "Forty";
             }
 
-            return $"{serverScore}:Love";
+            return $"{serverScore}:{receiverScore}";
         }
     }
 }
