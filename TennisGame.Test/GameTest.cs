@@ -17,5 +17,17 @@ namespace TennisGame.Test
             game.Server.Name.ShouldBeEqualTo(serverName);
             game.Receiver.Name.ShouldBeEqualTo(receiverName);
         }
+
+        [Test]
+        public void Test_ServerReceiver_0_0()
+        {
+            var serverName = "Nick Kyrgios";
+            var receiverName = "Dominic Thiem";
+
+            var game = new Game(serverName, receiverName);
+
+            game.ShowPoints().ShouldBeEqualTo("0:0");
+
+        }
     }
 }
