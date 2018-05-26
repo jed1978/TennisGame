@@ -23,6 +23,11 @@
                 return "Advantage in";
             }
 
+            if (Server.Point == 5 && Receiver.Point == 3)
+            {
+                return $"Winner: {Server.Name}";
+            }
+
             var winner = "";
             if (Server.Point == 4)
             {
