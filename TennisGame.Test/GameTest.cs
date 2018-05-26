@@ -9,26 +9,19 @@ namespace TennisGame.Test
         [Test]
         public void Test_TwoPlayerJoinTheGame()
         {
-            var serverName = "Nick Kyrgios";
-            var receiverName = "Dominic Thiem";
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            var game = new Game(serverName, receiverName);
-
-            game.Server.Name.ShouldBeEqualTo(serverName);
-            game.Receiver.Name.ShouldBeEqualTo(receiverName);
+            game.Server.Name.ShouldBeEqualTo("Nick Kyrgios");
+            game.Receiver.Name.ShouldBeEqualTo("Dominic Thiem");
         }
 
         [Test]
         public void Test_ServerReceiver_Draw_Love()
         {
-            var serverName = "Nick Kyrgios";
-            var receiverName = "Dominic Thiem";
-
-            var game = new Game(serverName, receiverName);
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
             game.ShowPoints().ShouldBeEqualTo("0:0");
             game.Score().ShouldBeEqualTo("Love:Love");
-
         }
     }
 }
