@@ -23,32 +23,34 @@
                 return "Advantage in";
             }
 
-            if (Server.Point == 5 && Receiver.Point == 3)
-            {
-                return $"Winner: {Server.Name}";
-            }
-
-            var winner = "";
-            if (Server.Point == 4)
-            {
-                winner = Server.Name;
-                return $"Winner: {winner}";
-            }
-
-            if (Receiver.Point == 4)
-            {
-                winner = Receiver.Name;
-                return $"Winner: {winner}";
-            }
-
-
 
             return RegularScoreRule(Server.Point, Receiver.Point);
         }
 
+        private string Winner(int serverPoint, int receiverPoint)
+        {
+            if (serverPoint == 5 && receiverPoint == 3)
+            {
+                return $"Winner: {Server.Name}";
+            }
+
+            if (serverPoint == 4)
+            {
+                return $"Winner: {Server.Name}";
+            }
+
+            if (receiverPoint == 4)
+            {
+                return $"Winner: {Receiver.Name}";
+            }
+
+            return "";
+        }
+
         private string RegularScoreRule(int serverPoint, int receiverPoint)
         {
-            return $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
+            var winner = Winner(serverPoint, receiverPoint);
+            return winner != "" ? winner : $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
         }
 
         private string DescribeScore(int point)
