@@ -21,20 +21,29 @@
             var serverScore = "Love";
             var receiverScore = "Love";
 
-            if (serverPoint == 1)
-            {
-                serverScore = "Fifteen";
-            }
-            else if (serverPoint == 2)
-            {
-                serverScore = "Thirty";
-            }
-            else if (serverPoint == 3)
-            {
-                serverScore = "Forty";
-            }
+            serverScore = DescribeScore(serverPoint);
+            receiverScore = DescribeScore(receiverPoint);
 
             return $"{serverScore}:{receiverScore}";
+        }
+
+        private string DescribeScore(int point)
+        {
+            string score = "Love";
+            if (point == 1)
+            {
+                return "Fifteen";
+            }
+            else if (point == 2)
+            {
+                return "Thirty";
+            }
+            else if (point == 3)
+            {
+                return "Forty";
+            }
+
+            return score;
         }
     }
 }
