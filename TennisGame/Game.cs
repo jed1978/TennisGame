@@ -2,6 +2,8 @@
 {
     public class Game
     {
+        private readonly DeuceScoreRule deuceRule;
+        private readonly RegularScoreRule reqularScoreRule;
         public Player Server { get; }
         public Player Receiver { get; }
 
@@ -9,33 +11,24 @@
         {
             Server = new Player(serverName);
             Receiver = new Player(receiverName);
+            deuceRule = new DeuceScoreRule();
+            reqularScoreRule = new RegularScoreRule();
         }
 
         public string ShowScore()
         {
-            //return DeuceScoreRule(Server.Point, Receiver.Point);
+            var deuce = deuceRule.Match(Server.Point, Receiver.Point);
 
-            return RegularScoreRule(Server.Point, Receiver.Point);
-        }
-
-        private string DeuceScoreRule(int serverPoint, int receiverPoint)
-        {
-            if (serverPoint == receiverPoint && serverPoint == 3)
+            if (deuce == "")
             {
-                return "Deuce";
+                var winner = Winner(Server.Point, Receiver.Point);
+                if (winner == "")
+                {
+                    return reqularScoreRule.Match(Server.Point, Receiver.Point);
+                }
+                return winner;
             }
-
-            if (serverPoint == 4 && receiverPoint == 3)
-            {
-                return "Advantage in";
-            }
-
-            if (serverPoint == 3 && receiverPoint == 4)
-            {
-                return "Advantage out";
-            }
-
-            return "";
+            return deuce;
         }
 
         private string Winner(int serverPoint, int receiverPoint)
@@ -61,38 +54,6 @@
             }
 
             return "";
-        }
-
-        private string RegularScoreRule(int serverPoint, int receiverPoint)
-        {
-            if (DeuceScoreRule(Server.Point, Receiver.Point) == "")
-            {
-                if (Winner(serverPoint, receiverPoint) == "")
-                {
-                    return $"{DescribeScore(serverPoint)}:{DescribeScore(receiverPoint)}";
-                }
-                return Winner(serverPoint, receiverPoint);
-            }
-            return DeuceScoreRule(Server.Point, Receiver.Point);
-        }
-
-        private string DescribeScore(int point)
-        {
-            string score = "Love";
-            if (point == 1)
-            {
-                return "Fifteen";
-            }
-            else if (point == 2)
-            {
-                return "Thirty";
-            }
-            else if (point == 3)
-            {
-                return "Forty";
-            }
-
-            return score;
         }
     }
 }
