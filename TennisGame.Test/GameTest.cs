@@ -20,7 +20,7 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            
+
             game.ShowScore().ShouldBeEqualTo("Love:Love");
         }
 
@@ -29,8 +29,8 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            
+            game.ServerEarnedPoint();
+
             game.ShowScore().ShouldBeEqualTo("Fifteen:Love");
         }
 
@@ -39,8 +39,8 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Server.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ServerEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Thirty:Love");
         }
@@ -50,9 +50,9 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Server.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ServerEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Forty:Love");
         }
@@ -62,8 +62,8 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Fifteen:Fifteen");
         }
@@ -73,11 +73,11 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Server.EarnedPoint();  //Player Win if earned 4 points 
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ServerEarnedPoint(); //Player Win if earned 4 points 
 
             game.ShowScore().ShouldBeEqualTo("Winner: Nick Kyrgios");
         }
@@ -87,12 +87,12 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Receiver.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ReceiverEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Winner: Dominic Thiem");
         }
@@ -102,12 +102,12 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Deuce");
         }
@@ -117,13 +117,13 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Advantage in");
         }
@@ -133,14 +133,14 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint(); //Deuce
-            game.Server.EarnedPoint(); //Adv in
-            game.Server.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint(); //Deuce
+            game.ServerEarnedPoint(); //Adv in
+            game.ServerEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo("Winner: Nick Kyrgios");
         }
@@ -150,13 +150,13 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint(); //Deuce
-            game.Receiver.EarnedPoint(); //Adv out
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint(); //Deuce
+            game.ReceiverEarnedPoint(); //Adv out
 
 
             game.ShowScore().ShouldBeEqualTo("Advantage out");
@@ -167,16 +167,33 @@ namespace TennisGame.Test
         {
             var game = new Game("Nick Kyrgios", "Dominic Thiem");
 
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint();
-            game.Server.EarnedPoint();
-            game.Receiver.EarnedPoint(); //Deuce
-            game.Receiver.EarnedPoint(); //Adv out
-            game.Receiver.EarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint(); //Deuce
+            game.ReceiverEarnedPoint(); //Adv out
+            game.ReceiverEarnedPoint();
 
             game.ShowScore().ShouldBeEqualTo($"Winner: Dominic Thiem");
+        }
+
+        [Test, Ignore("Refactoring")]
+        public void Test_Server_Deuce_After_Advantange()
+        {
+            var game = new Game("Nick Kyrgios", "Dominic Thiem");
+
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint();
+            game.ServerEarnedPoint();
+            game.ReceiverEarnedPoint(); //Deuce
+            game.ServerEarnedPoint(); //Adv in
+            game.ReceiverEarnedPoint(); //Deuce
+
+            game.ShowScore().ShouldBeEqualTo($"Deuce");
         }
     }
 }
