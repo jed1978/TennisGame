@@ -1,5 +1,0 @@
-language: C
-install:
-  - sudo apt-get install mono-devel mono-gmcs nunit-console
-script:
-  - xbuild ./TennisGame/TennisGame/TennisGame.csproj
