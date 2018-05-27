@@ -1,95 +1,54 @@
-﻿using System;
-
-namespace TennisGame
+﻿namespace TennisGame
 {
     public class Game
     {
-        private string _server;
-        private string _receiver;
-        private int _playerOneScore;
-        private int _playerTwoScore;  
+        private readonly DeuceScoreRule _deuceRule;
+        private readonly RegularScoreRule _regularScoreRule;
+        private readonly WinnerRule _winnerRule;
+        private int _serverPoint;
+        private int _receiverPoint;
 
-        public Game(string server, string receiver)
+        public Player Server { get; }
+        public Player Receiver { get; }
+
+        public Game(string serverName, string receiverName)
         {
-            this._server = server;
-            this._receiver = receiver;
+            Server = new Player(serverName);
+            Receiver = new Player(receiverName);
+            _deuceRule = new DeuceScoreRule();
+            _regularScoreRule = new RegularScoreRule();
+            _winnerRule = new WinnerRule(serverName, receiverName);
         }
 
-        public string Score()
+        public string ShowScore()
         {
-            var score = "";
+            if (_deuceRule.Match(_serverPoint, _receiverPoint))
+            {
+                return _deuceRule.Score;
+            }
 
-            if (_playerOneScore == _playerTwoScore)
-                score = TranslatePointToScore(_playerOneScore) + " All";
+            if (_regularScoreRule.Match(_serverPoint, _receiverPoint))
+            {
+                return _regularScoreRule.Score;
+            }
+
+            return _winnerRule.Match(_serverPoint, _receiverPoint) ? _winnerRule.Score : "";
+        }
+
+        public void ServerEarnedPoint()
+        {
+            if (_serverPoint == 3 && _receiverPoint == 4)
+                _receiverPoint--;
             else
-                score = TranslatePointToScore(_playerOneScore) + " " + TranslatePointToScore(_playerTwoScore);
-            return score;
+                _serverPoint++;
         }
 
-        public string Point()
+        public void ReceiverEarnedPoint()
         {
-            var score = "";
-
-            score = TranslatePoint(_playerOneScore) + ":" + TranslatePoint(_playerTwoScore);
-            return score;
-
-        }
-
-        public void PlayerTwoWinPoint()
-        {
-            _playerTwoScore++;
-        }
-
-        /// <summary>
-        /// PlayerOne得分
-        /// </summary>
-        public void PlayerOneWinPoint()
-        {
-            _playerOneScore++;
-        }
-
-        private string TranslatePointToScore(int point)
-        {
-            var score = "";
-            switch (point)
-            {
-                case 1:
-                    score = "Fifteen";
-                    break;
-                case 2:
-                    score = "Thirty";
-                    break;
-                case 3:
-                    score = "Forty";
-                    break;
-                default:
-                    score = "Love";
-                    break;
-            }
-
-            return score;
-        }
-
-        private string TranslatePoint(int point)
-        {
-            var score = "";
-            switch (point)
-            {
-                case 1:
-                    score = "15";
-                    break;
-                case 2:
-                    score = "30";
-                    break;
-                case 3:
-                    score = "40";
-                    break;
-                default:
-                    score = "0";
-                    break;
-            }
-
-            return score;
+            if (_serverPoint == 4 && _receiverPoint == 3)
+                _serverPoint--;
+            else
+                _receiverPoint++;
         }
     }
 }
