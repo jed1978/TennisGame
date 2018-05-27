@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/meujcoiu57duqhl8?svg=true)](https://ci.appveyor.com/project/jed1978/tennisgame)
+
 # TDD-Kata-TennisScorer
 This Kata is about implementing a simple tennis game by TDD
 
